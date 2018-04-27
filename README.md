@@ -6,6 +6,8 @@
 ### start:
 	1. start emulator
 	2. react-native run-android
+	3. (app is started in the emulator)
+	4. CTRL-M -> Enable Hot Reloading)
 
 ### "Warning: License for package Android SDK Platform 23 not accepted"
 	do: ./sdkmanager --licenses
