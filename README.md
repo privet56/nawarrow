@@ -1,7 +1,7 @@
 # NawARROW
 ## Project Management with a React Native App for Android and iOS 
 
-![navarrow](https://raw.githubusercontent.com/privet56/nawarrow/master/nawarrow.1.gif)
+![navarrow](https://raw.githubusercontent.com/privet56/nawarrow/master/nawarrow.2.gif)
 
 ### start:
 	1. start emulator
