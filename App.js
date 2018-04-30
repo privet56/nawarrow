@@ -7,130 +7,61 @@
 import React, { Component } from 'react';
 import {
   Platform, StyleSheet, Text, View, Image,
-  ImageBackground, Button,
-  Animated, Easing
+  ImageBackground, Button, AppRegistry,
+  Animated, Easing, Navigator
 } from 'react-native';
 
+//Invariant Violation: Navigator is deprecated and has been removed from this package.
+//It can now be installed and imported from react-native-deprecated-custom-components
+//import { Navigator } from 'react-native';
+import { StackNavigator } from 'react-navigation';
 import Btn from 'react-native-micro-animated-button';
 
 const { timing } = Animated;
 
+import HomeScreen from './screens/Home';
+import ProjectsScreen from './screens/Projects';
+
 //Image -> invariant violation element type is invalid expected a string
 //..then you imported Image from react, but you should do it from react-native
 
-const instructions = Platform.select({
-  ios: 'Your Project Management Tool,\n' +
-    'for iOS!',
-  android: 'Your Project Management Tool,\n' +
-    'for Android and iOS!',
+//vscode problem!
+//type Props = {};
+
+const MainScreenNavigator = StackNavigator({
+    Home: {
+      screen: HomeScreen,
+      navigationOptions: {
+        headerLeft: null,
+        title:"Home!",
+      }
+     },
+    Projects: { screen: ProjectsScreen },
+},
+{
+  initialRouteName: 'Home',
+  //headerMode: 'none',         //TODO: https://reactnavigation.org/docs/stack-navigator.html
 });
 
-//vscode problem!
-type Props = {};
-
-export default class App extends Component<Props>
+export default class App extends Component//<Props>
 {
   state = {
-    scaleAnim: new Animated.Value(1)
+    
   }
-  constructor() {
+  constructor()
+  {
     super(arguments[0]);
-    this.state = {
-      scaleAnim: new Animated.Value(1)
-    }
   }    
   componentDidMount()
   {
-    Animated.loop(
-      Animated.sequence([
-        Animated.timing(this.state.scaleAnim, {
-          toValue: 1.3,
-          duration: 1500
-        }),
-        Animated.timing(this.state.scaleAnim, {
-          toValue: 1,
-          duration: 1500
-        })
-      ])).start();
-  }
-  start() 
-  {
-    //TODO: navi!
+      console.log("nawARROW - App:componentDidMount");
   }
   render()
   {
     return (
-      <ImageBackground source={require('./res/bg.gif')} style={styles.container}>
-        <Text style={styles.welcome}>
-          Naw-ARROW!!
-        </Text>
-        <Animated.Image source={require('./res/manwithbow.gif')}
-          style={{width: 99, height: 99,
-            transform: [
-              {
-                scaleY: this.state.scaleAnim
-              }, {
-                scaleX: this.state.scaleAnim
-              }, {
-                translateX: 0
-              }, {
-                translateY: 9
-              }
-            ]
-          }}
-        />
-        <Text style={[styles.instructions, styles.belowpic]}>
-          {instructions}
-        </Text>
-
-        <Animated.Text style={[ styles.instructions ]}>
-          So you do not stand in the rain!
-        </Animated.Text>
-
-        <Btn icon="arrow-up" title="Start!" successIcon="check" onPress={this.start} foregroundColor="white" style={[
-          styles.btn,
-          {transform: [{scale: this.state.scaleAnim}]}
-        ]}>
-        </Btn>
-
-      </ImageBackground>
-    );
+      <MainScreenNavigator />
+      );     
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 30,
-    textAlign: 'center',
-    margin: 10,
-    color:"white",
-    marginBottom: 33,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-    color:"white"
-  },
-  belowpic: {
-    marginTop: 31,
-  },
-  button: {
-    color:"red"
-  },
-  btn: {
-    marginHorizontal: 99,
-    backgroundColor: 'transparent',
-    backgroundColor: 'green',
-    borderWidth: 3,
-    width:66,
-    height:66
-  },  
-  
-});
+AppRegistry.registerComponent('App', () => App);

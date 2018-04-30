@@ -1,0 +1,100 @@
+{
+	"projects": [
+		{
+			"name": "Navajo",
+			"description": "Project to free the native American population",
+			"status": "wip",
+			"milestones": [
+				{
+					"name":"Architecture planning",
+					"estimatedEfforts": 9,
+					"spentEfforts": 3
+				},
+				{
+					"name":"Development Environment Setup",
+					"estimatedEfforts": 29,
+					"spentEfforts": 3
+				},
+				{
+					"name":"Server Environment Setup",
+					"estimatedEfforts": 19,
+					"spentEfforts": 3
+				},
+				{
+					"name":"Production Deployment",
+					"estimatedEfforts": 9,
+					"spentEfforts": 0
+				},
+				{
+					"name":"Integration Test",
+					"estimatedEfforts": 3,
+					"spentEfforts": 3
+				}
+			]
+		},
+		{
+			"name": "Navarra",
+			"description": "Project to build a Kingdom in Spain",
+			"status": "finished",
+			"milestones": [
+				{
+					"name":"Architecture planning",
+					"estimatedEfforts": 9,
+					"spentEfforts": 3
+				},
+				{
+					"name":"Development Environment Setup",
+					"estimatedEfforts": 29,
+					"spentEfforts": 3
+				},
+				{
+					"name":"Server Environment Setup",
+					"estimatedEfforts": 19,
+					"spentEfforts": 3
+				},
+				{
+					"name":"Production Deployment",
+					"estimatedEfforts": 9,
+					"spentEfforts": 0
+				},
+				{
+					"name":"Integration Test",
+					"estimatedEfforts": 3,
+					"spentEfforts": 3
+				}
+			]
+		},
+		{
+			"name": "Naw-Ahoi",
+			"description": "Project to make communication between ships more effective",
+			"status": "wip",
+			"milestones": [
+				{
+					"name":"Architecture planning",
+					"estimatedEfforts": 9,
+					"spentEfforts": 3
+				},
+				{
+					"name":"Development Environment Setup",
+					"estimatedEfforts": 29,
+					"spentEfforts": 3
+				},
+				{
+					"name":"Server Environment Setup",
+					"estimatedEfforts": 19,
+					"spentEfforts": 3
+				},
+				{
+					"name":"Production Deployment",
+					"estimatedEfforts": 9,
+					"spentEfforts": 0
+				},
+				{
+					"name":"Integration Test",
+					"estimatedEfforts": 3,
+					"spentEfforts": 3
+				}
+			]
+		}
+	]
+}
