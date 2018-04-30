@@ -28,20 +28,31 @@ const instructions = Platform.select({
 export default class Home extends Component
 {
   static navigationOptions =  ({ navigation }) => ({
-    title: 'Home'
-  })
+    title: 'Home',
+    headerStyle:{ backgroundColor: '#306470'},
+    headerTitleStyle:{ color: '#e3f2dc'},
+  });
+
+  listeners = [];
 
   state = {
     scaleAnim: new Animated.Value(1)
   }
-  constructor(props) {
+  constructor(props)
+  {
     super(props);
-
-console.log("Home:const:"+this.props.navigation);
-
     this.state = {
       scaleAnim: new Animated.Value(1)
-    }
+    };
+
+    this.listeners.push(this.props.navigation.addListener('didBlur', () => this.btnStart.reset()));  //willFocus, willBlur, didFocus, didBlur
+  }
+
+  componentWillUnmount()
+  {
+    this.listeners.forEach((listener) => {
+      listener.remove();
+    });
   }
   componentDidMount()
   {
@@ -57,19 +68,23 @@ console.log("Home:const:"+this.props.navigation);
         })
       ])).start();
 
+      this.navi2Projects = this.navi2Projects.bind(this);
+
       console.log("nawARROW - Home:componentDidMount");
+
+      //this.btnStart.success();
+      this.btnStart.reset();
   }
-  start() 
+  navi2Projects() 
   {
-    console.log("navigate1:"+this);
-    console.log("navigate2:"+this.props);
-    console.log("navigate3:"+this.props.navigation);
-    //this.props.navigation.navigate('Projects', { name: 'Projects',  navigation: this.props.navigation });
+    //TODO: why is 
+    //  onPress={this.navi2Projects}
+    //not working?
+    this.props.navigation.navigate('Projects', { name: 'John' });
   }
   render()
   {
-    
-
+    //TODO: style Btn based on https://github.com/sonaye/react-native-micro-animated-button
     return (
       <ImageBackground source={require('../res/bg.gif')} style={styles.container}>
         <Text style={styles.welcome}>
@@ -84,15 +99,15 @@ console.log("Home:const:"+this.props.navigation);
           So you do not stand in the rain!
         </Animated.Text>
 
-        <Btn name="ambulance" title="Start!" successIcon="thumbs-up" icon="thumbs-up" foregroundColor="white"
-        onPress={() => this.props.navigation.navigate('Projects', { name: 'John' })}
+        <Btn title="Start!" successIcon="thumbs-up" icon="thumbs-up" errorIcon="thumbs-up" foregroundColor="white"
+          ref={ref => (this.btnStart = ref)}
+          onPress={() => this.props.navigation.navigate('Projects', { name: 'John' }) }
           style={[
           styles.btn,
           {transform: [{scale: this.state.scaleAnim}]}
         ]}
         >
-
-        ^
+          ^
         </Btn>
 
       </ImageBackground>

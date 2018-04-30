@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <script src="s.js"></script>
+        <script>
+            function in2out(sIn, oOut)
+            {
+                var sOut = e(sIn);
+                oOut.value = sOut;
+            }
+            function out2in(sOut, oIn)
+            {
+                var sIn = d(sOut);
+                oIn.value = sIn;
+                var jsonIn = JSON.parse(sIn);
+                alert(jsonIn);
+            }
+        </script>
+    </head>
+    <body>
+        <textarea name="in" id="in" cols="30" rows="10">
+
+        </textarea>
+        <textarea name="out" id="out" cols="30" rows="10">
+
+        </textarea>
+        <button title="in->out" onclick="in2out(document.getElementById('in').value, document.getElementById('out'))">in->out</button>
+        <button title="out->in" onclick="out2in(document.getElementById('out').value, document.getElementById('in'))">out->in</button>
+    </body>
+</html>

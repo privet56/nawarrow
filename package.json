@@ -8,8 +8,10 @@
   },
   "dependencies": {
     "animated": "^0.2.2",
+    "firebase": "^4.13.1",
     "react": "16.3.1",
     "react-native": "0.55.3",
+    "react-native-firebase": "^4.0.6",
     "react-native-micro-animated-button": "^0.0.23",
     "react-native-vector-icons": "^4.6.0",
     "react-navigation": "^1.5.11"
