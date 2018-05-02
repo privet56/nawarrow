@@ -13,7 +13,7 @@ import Btn from 'react-native-micro-animated-button';
 
 import { getProjects, pushData, initApi } from '../services/fbdbwrapper';
 import Header from "../components/Header";
-import ProjectModel from "../model/model";
+import * as ProjectModel from "../model/model";
 const { timing } = Animated;
 
 import { inject, observer } from 'mobx-react';
@@ -42,12 +42,11 @@ export default class Projects extends Component
   componentWillUnmount() {
     if(this.unsubscribeGetMessages)
        this.unsubscribeGetMessages();
-  this.props.projectsStore.unSubscribeToGetProjectsFromServer();
+    this.props.projectsStore.unSubscribeToGetProjectsFromServer();
   }
   componentDidMount()
   {
     console.log("nawARROW - Projects:componentDidMount");
-    initApi();
 
     /*this is the version without flux/mobx
     this.unsubscribeGetMessages = getProjects((snapshot) => {
@@ -59,7 +58,8 @@ export default class Projects extends Component
   }
   onProjectSelected = (item, index) =>
   {
-
+    var newStatus = item.status == ProjectModel.PROJECTSTATUS_WIP ? ProjectModel.PROJECTSTATUS_FINISHED : ProjectModel.PROJECTSTATUS_WIP;
+    this.props.projectsStore.postProjectStatusToServer(item, index, newStatus);
   }
   renderRow = (item, index) => {
     return (

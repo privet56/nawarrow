@@ -25,25 +25,27 @@ export default class Project extends Component
 
   onSelected = () =>
   {
-    this.setState({hightlighted:!this.state.highlighted});
+    this.setState({highlighted:!this.state.highlighted});
     this.props.onPress();
   }
 
   render() {
 
     return (
-      <TouchableOpacity style={[ styles.pr, !this.state.highlighted ? styles.highlighted : styles.unhighlighted ]} onPress={() => this.onSelected() }>
-        <Text style={[ styles.prtext, styles.prtextname ]}>{this.props.item.name}</Text>
-        <Text style={[ styles.prtext ]}>{this.props.item.description}</Text>
-        <View style={{width:'100%', flex:1, flexDirection: 'row'}}>
-          <Text style={[ styles.prtext, styles.prstatus ]}>Status: </Text>
-          <Animated.Image source={require('../res/wip3.gif')} style={[styles.img, this.isStatusOK() && styles.hidden ]} />
-          <Animated.Image source={require('../res/finished3.gif')} style={[styles.img, !this.isStatusOK() && styles.hidden ]} />
-          <Text style={[ styles.prtext, styles.prstatus ]}>  Efforts: </Text>
-          <Animated.Image source={require('../res/rainy4.gif')} style={[styles.img, this.isStatusOK() && styles.hidden ]} />
-          <Animated.Image source={require('../res/sun3.gif')} style={[styles.img, !this.isStatusOK() && styles.hidden ]} />
-        </View>
-    </TouchableOpacity>
+      <Animated.View style={[ styles.pr, this.state.highlighted ? styles.highlighted : styles.unhighlighted ]}>
+        <TouchableOpacity onPress={() => this.onSelected() }>
+          <Text style={[ styles.prtext, styles.prtextname ]}>{this.props.item.name}</Text>
+          <Text style={[ styles.prtext ]}>{this.props.item.description}</Text>
+          <View style={{width:'100%', flex:1, flexDirection: 'row'}}>
+            <Text style={[ styles.prtext, styles.prstatus ]}>Status: </Text>
+            <Animated.Image source={require('../res/wip3.gif')} style={[styles.img, this.isStatusOK() && styles.hidden ]} />
+            <Animated.Image source={require('../res/finished3.gif')} style={[styles.img, !this.isStatusOK() && styles.hidden ]} />
+            <Text style={[ styles.prtext, styles.prstatus ]}>  Efforts: </Text>
+            <Animated.Image source={require('../res/rainy4.gif')} style={[styles.img, this.isStatusOK() && styles.hidden ]} />
+            <Animated.Image source={require('../res/sun3.gif')} style={[styles.img, !this.isStatusOK() && styles.hidden ]} />
+          </View>
+      </TouchableOpacity>
+    </Animated.View>
     )
   }
 }
@@ -88,8 +90,10 @@ const styles = {
 
   },
   pr: {
-    margin: 10,
-    padding: 10,
+    margin: 20,
+    padding: 20,
+    marginTop: 10,
+    marginBottom: 10,    
     backgroundColor: '#e8b566',
     borderColor: '#979797',
     borderStyle: 'solid',
@@ -113,15 +117,17 @@ const styles = {
   },
   highlighted: {
     backgroundColor: '#E1FFC7',
-    transform: [
+    transform: [{ rotateX: '33deg'},{ scale: 1.1}]
+/*    transform: [
 //      { perspective: 850 },
 //      { translateX: - Dimensions.get('window').width * 0.24 },
-      { rotateX: '30deg'},
-    ],
+      { rotateX: '30deg' },
+    ],*/
   },
   unhighlighted: {
-    transform: [
-      { rotateX: '0deg'},
-    ],
+    transform: [{ rotateX: '0deg'}]
+    /*transform: [
+      { rotateX: '00deg' },
+    ],*/
   }  
 }

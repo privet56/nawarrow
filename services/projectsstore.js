@@ -1,5 +1,5 @@
 import { observable, action, computed } from 'mobx';
-import { getProjects, pushProject } from './fbdbwrapper';
+import { getProjects, pushProject, pushProjectStatus } from './fbdbwrapper';
 
 export default class ProjectsStore
 {
@@ -11,7 +11,11 @@ export default class ProjectsStore
 
   @action
   postProjectToServer(project){
-    postData(project)
+    pushProject(project)
+  }
+  @action
+  postProjectStatusToServer(project, index, status){
+    pushProjectStatus(project, index, status)
   }
 
   @action

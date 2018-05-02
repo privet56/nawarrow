@@ -23,10 +23,15 @@ export const setListener = (endpoint, updaterFn) => {
 }
 
 export const getProjects = (updaterFn) => {
-  setListener('projects', updaterFn)
+  return setListener('projects', updaterFn)
 };
 
 export const pushProject = (endpoint, data) => {
   initApi();
   return fbdb.database().ref(endpoint).push(data);
+}
+export const pushProjectStatus = (project, index, data) => {
+  initApi();
+  return fbdb.database().ref("projects/"+index+"/status").set(data);
+  //return fbdb.database().ref("projects/"+index+"/status").push(data);
 }
