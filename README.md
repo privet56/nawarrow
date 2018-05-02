@@ -17,9 +17,11 @@
 ### "Warning: License for package Android SDK Platform 23 not accepted"
 	do: ./sdkmanager --licenses
 
-TODO: use native firebase wrapper!
-TODO: use auth for firebase("https://nawarrow-a5d18.firebaseio.com")
+TODO: stackNavigation animation
 TODO: custom fonts!
+TODO: use native fbdb wrapper!(faster)
+TODO: use auth for fbdb
+TODO: iOS: beautify styles for iPhone
 
 ### libs/hints
 	react-native-micro-animated-button	//ATTENTION: needs react-native link
