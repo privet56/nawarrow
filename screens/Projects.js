@@ -16,8 +16,12 @@ import Header from "../components/Header";
 import ProjectModel from "../model/model";
 const { timing } = Animated;
 
+import { inject, observer } from 'mobx-react';
+
 //type Props = {};
 
+@inject("projectsStore")
+@observer
 export default class Projects extends Component
 {
   static navigationOptions = {
@@ -36,24 +40,30 @@ export default class Projects extends Component
     super(arguments[0]);
   }
   componentWillUnmount() {
-    this.unsubscribeGetMessages();
+    if(this.unsubscribeGetMessages)
+       this.unsubscribeGetMessages();
+  this.props.projectsStore.unSubscribeToGetProjectsFromServer();
   }
   componentDidMount()
   {
-      console.log("nawARROW - Projects:componentDidMount");
-      initApi();
+    console.log("nawARROW - Projects:componentDidMount");
+    initApi();
 
-      //TODO: use stores & mobx(or redux better?)
-      //TODO: refresh on this.listeners.push(this.props.navigation.addListener('willAppear?', () => this....
-      this.unsubscribeGetMessages = getProjects((snapshot) => {
-        this.setState({
-            projects: Object.values(snapshot.val())
-        })
-    })
+    /*this is the version without flux/mobx
+    this.unsubscribeGetMessages = getProjects((snapshot) => {
+      this.setState({
+          projects: Object.values(snapshot.val())
+      })
+    })*/
+    this.props.projectsStore.subscribeToGetProjectsFromServer();
   }
-  renderRow = (item) => {
+  onProjectSelected = (item, index) =>
+  {
+
+  }
+  renderRow = (item, index) => {
     return (
-        <Project item={item} />
+        <Project item={item} index={index} onPress={() => this.onProjectSelected(item, index)} />
     );
   }
   render()
@@ -65,9 +75,10 @@ export default class Projects extends Component
             style={styles.container}>
             <FlatList
                 style={styles.container}
-                data={this.state.projects}
+                //data={this.state.projects}
+                data={this.props.projectsStore.projects}
                 //renderItem={Project}
-                renderItem={({ item }) => ( this.renderRow(item))}
+                renderItem={({ item, index }) => ( this.renderRow(item, index))}
                 //keyExtractor={(item, index) => (`project-${index}`)}
                 keyExtractor={(item, index) => (item.name)}
             />

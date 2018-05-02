@@ -29,7 +29,7 @@ const instructions = Platform.select({
 export default class Home extends Component
 {
   static navigationOptions =  ({ navigation }) => ({
-    headerStyle:{ backgroundColor: '#306470', flex:1 },
+    headerStyle:{ backgroundColor: '#306470'/*, flex:1*/ },
     headerTitleStyle:{ color: '#e3f2dc'},
   });
 
@@ -41,11 +41,6 @@ export default class Home extends Component
   constructor(props)
   {
     super(props);
-    this.state = {
-      scaleAnim: new Animated.Value(1)
-    };
-
-    this.listeners.push(this.props.navigation.addListener('didBlur', () => this.btnStart.reset()));  //willFocus, willBlur, didFocus, didBlur
   }
 
   componentWillUnmount()
@@ -56,6 +51,11 @@ export default class Home extends Component
   }
   componentDidMount()
   {
+    this.state = {
+      scaleAnim: new Animated.Value(1)
+    };    
+    this.listeners.push(this.props.navigation.addListener('didBlur', () => this.btnStart.reset()));  //willFocus, willBlur, didFocus, didBlur
+
     Animated.loop(
       Animated.sequence([
         Animated.timing(this.state.scaleAnim, {

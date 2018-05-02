@@ -1,7 +1,7 @@
 import { observable, action, computed } from 'mobx';
 import { getProjects, pushProject } from './fbdbwrapper';
 
-export default class Store
+export default class ProjectsStore
 {
   @observable
   projects = []
@@ -21,7 +21,7 @@ export default class Store
 
   @action
   subscribeToGetProjectsFromServer(){
-    this.unsubscribeFn = getMessages(this.updateProjects.bind(this))
+    this.unsubscribeFn = getProjects(this.updateProjects.bind(this))
   }
 
   @action

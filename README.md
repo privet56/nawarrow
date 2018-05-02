@@ -23,6 +23,7 @@ TODO: custom fonts!
 	npm install --save react-navigation
 	extremely slow navigation -> disable remote js debug!
 	mobx setup:
+		npm install mobx & mobx-react --save
 		npm install babel-preset-react-native-stage-0 --save
 		"presets": ["react-native", "react-native-stage-0/decorator-support"]			//in .babelrc
 		npm start reset-cache

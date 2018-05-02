@@ -23,6 +23,8 @@ import HomeScreen from './screens/Home';
 import ProjectsScreen from './screens/Projects';
 import Header from "./components/Header";
 import * as storage from './services/storage';
+import { Provider } from 'mobx-react';
+import ProjectsStore from './services/projectsstore';
 
 //Image -> invariant violation element type is invalid expected a string
 //..then you imported Image from react, but you should do it from react-native
@@ -61,7 +63,9 @@ export default class App extends Component//<Props>
   render()
   {
     return (
-      <MainScreenNavigator />
+      <Provider projectsStore={new ProjectsStore()}>
+        <MainScreenNavigator />
+      </Provider>
       );     
   }
 }

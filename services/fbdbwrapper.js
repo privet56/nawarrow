@@ -17,12 +17,16 @@ export const initApi = () => {
 }
 
 export const setListener = (endpoint, updaterFn) => {
+    initApi();
     fbdb.database().ref(endpoint).on('value', updaterFn);
     return () => fbdb.database().ref(endpoint).off();
 }
 
-export const getProjects = (updaterFn) => setListener('projects', updaterFn);
+export const getProjects = (updaterFn) => {
+  setListener('projects', updaterFn)
+};
 
 export const pushProject = (endpoint, data) => {
+  initApi();
   return fbdb.database().ref(endpoint).push(data);
 }
