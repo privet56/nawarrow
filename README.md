@@ -16,9 +16,13 @@
 
 TODO: use native firebase wrapper!
 TODO: use auth for firebase("https://nawarrow-a5d18.firebaseio.com")
-TODO: fonts!
+TODO: custom fonts!
 
 ### libs/hints
 	react-native-micro-animated-button	//ATTENTION: needs react-native link
 	npm install --save react-navigation
 	extremely slow navigation -> disable remote js debug!
+	mobx setup:
+		npm install babel-preset-react-native-stage-0 --save
+		"presets": ["react-native", "react-native-stage-0/decorator-support"]			//in .babelrc
+		npm start reset-cache

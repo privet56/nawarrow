@@ -14,6 +14,7 @@ const { timing } = Animated;
 //..then you imported Image from react, but you should do it from react-native
 
 import { StackNavigator, navigation, navigate } from 'react-navigation';
+import Header from "../components/Header";
 
 const instructions = Platform.select({
   ios: 'Your Project Management Tool,\n' +
@@ -28,8 +29,7 @@ const instructions = Platform.select({
 export default class Home extends Component
 {
   static navigationOptions =  ({ navigation }) => ({
-    title: 'Home',
-    headerStyle:{ backgroundColor: '#306470'},
+    headerStyle:{ backgroundColor: '#306470', flex:1 },
     headerTitleStyle:{ color: '#e3f2dc'},
   });
 
@@ -75,12 +75,12 @@ export default class Home extends Component
       //this.btnStart.success();
       this.btnStart.reset();
   }
-  navi2Projects() 
+  navi2Projects = () =>
   {
     //TODO: why is 
     //  onPress={this.navi2Projects}
     //not working?
-    this.props.navigation.navigate('Projects', { name: 'John' });
+    this.props.navigation.navigate('Projects', { originator: 'home' });
   }
   render()
   {
@@ -101,7 +101,7 @@ export default class Home extends Component
 
         <Btn title="Start!" successIcon="thumbs-up" icon="thumbs-up" errorIcon="thumbs-up" foregroundColor="white"
           ref={ref => (this.btnStart = ref)}
-          onPress={() => this.props.navigation.navigate('Projects', { name: 'John' }) }
+          onPress={() => this.navi2Projects() }
           style={[
           styles.btn,
           {transform: [{scale: this.state.scaleAnim}]}

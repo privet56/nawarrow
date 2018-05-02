@@ -12,7 +12,8 @@ import Project from '../components/Project';
 import Btn from 'react-native-micro-animated-button';
 
 import { getProjects, pushData, initApi } from '../services/fbdbwrapper';
-
+import Header from "../components/Header";
+import ProjectModel from "../model/model";
 const { timing } = Animated;
 
 //type Props = {};
@@ -23,6 +24,7 @@ export default class Projects extends Component
     title: "Projects",
     headerStyle:{ backgroundColor: '#306470'},
     headerTitleStyle:{ color: '#e3f2dc'},
+    headerRight: <Header />,
   }
 
   unsubscribeGetMessages = null;
@@ -49,6 +51,11 @@ export default class Projects extends Component
         })
     })
   }
+  renderRow = (item) => {
+    return (
+        <Project item={item} />
+    );
+  }
   render()
   {
     return (
@@ -59,8 +66,10 @@ export default class Projects extends Component
             <FlatList
                 style={styles.container}
                 data={this.state.projects}
-                renderItem={Project}
-                keyExtractor={(item, index) => (`project-${index}`)}
+                //renderItem={Project}
+                renderItem={({ item }) => ( this.renderRow(item))}
+                //keyExtractor={(item, index) => (`project-${index}`)}
+                keyExtractor={(item, index) => (item.name)}
             />
         </KeyboardAvoidingView>
       </ImageBackground>

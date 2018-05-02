@@ -21,6 +21,8 @@ const { timing } = Animated;
 
 import HomeScreen from './screens/Home';
 import ProjectsScreen from './screens/Projects';
+import Header from "./components/Header";
+import * as storage from './services/storage';
 
 //Image -> invariant violation element type is invalid expected a string
 //..then you imported Image from react, but you should do it from react-native
@@ -32,7 +34,7 @@ const MainScreenNavigator = StackNavigator({
     Home: {
       screen: HomeScreen,
       navigationOptions: {
-        headerLeft: null,
+        headerRight: <Header />,
         title:"Home!",
       }
      },
