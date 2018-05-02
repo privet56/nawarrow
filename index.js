@@ -8,3 +8,5 @@ import App from './App';
 //useStrict(true);
 
 AppRegistry.registerComponent('nawarrow', () => App);
+//react-native-web:
+//AppRegistry.runApplication('nawarrow', { rootTag: document.getElementById('react-root') });

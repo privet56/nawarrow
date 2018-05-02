@@ -12,15 +12,18 @@
     "firebase": "^4.13.1",
     "mobx": "^4.2.0",
     "mobx-react": "^5.1.2",
-    "react": "16.3.2",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
     "react-native": "0.55.3",
     "react-native-firebase": "^4.0.6",
     "react-native-micro-animated-button": "^0.0.23",
     "react-native-vector-icons": "^4.6.0",
+    "react-native-web": "^0.6.1",
     "react-navigation": "^1.5.11"
   },
   "devDependencies": {
     "babel-jest": "22.4.3",
+    "babel-plugin-react-native-web": "^0.6.1",
     "babel-preset-react-native": "4.0.0",
     "jest": "22.4.3",
     "react-test-renderer": "16.3.1"

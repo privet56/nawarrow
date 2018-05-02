@@ -3,6 +3,9 @@
 
 ![navarrow](https://raw.githubusercontent.com/privet56/nawarrow/master/nawarrow.1.gif)
 
+### Live Update of the Project Status on iOS/iPhone after changing the data in the Android Phone:
+![navarrowiosandroid](https://raw.githubusercontent.com/privet56/nawarrow/master/nawarrow.ios.vs.android.gif)
+
 ### start:
 	1. start emulator
 	2. react-native run-android
