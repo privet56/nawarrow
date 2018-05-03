@@ -1,6 +1,8 @@
 set "PATH=%~dp0..\devenv\git;%~dp0..\devenv\git\bin;%PATH%"
 set "PATH=%~dp0..\devenv\nodejs;%~dp0..\devenv\nodejs\node_modules\npm;%PATH%"
-set "PATH=%~dp0..\devenv\go;%~dp0..\devenv\go\bin;%PATH%"
+set "PATH=%~dp0..\devenv\python;%~dp0..\devenv\python\Scripts;%PATH%"
+
+set PYTHON=%~dp0..\devenv\python\python.exe
 
 set ANDROID_SDK_HOME=c:\android
 rem needs Java 8.x

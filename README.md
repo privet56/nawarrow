@@ -24,6 +24,13 @@ Live update of the Project Status on iOS/iPhone after changing the data in the A
 
 ### TODO:
 	TODO: react-native-web
+		npm install --save react react-native-web
+		npm install webpack babel-loader babel-preset-react babel-preset-es2015 babel-preset-stage-1 webpack-merge --save
+		npm install webpack-dev-server --save-dev
+		npm install webpack-cli --save-dev
+		+ index.html + webpack.config.js
+		npm run web:dev
+
 	TODO: use auth for fbdb
 	TODO: iOS: beautify styles for iPhone
 	TODO: Splash on iOS
