@@ -5,7 +5,7 @@
 
 ### Live Update iOS <> Android:
 Live update of the Project Status on iOS/iPhone after changing the data in the Android Phone:
-![navarrowiosandroid](https://raw.githubusercontent.com/privet56/nawarrow/master/nawarrow.ios.vs.android.gif)
+![navarrowiosandroid](https://raw.githubusercontent.com/privet56/nawarrow/master/nawarrow.ios.vs.android.small.gif)
 
 ### Start:
 	1. start emulator
