@@ -1,5 +1,5 @@
 
-import React, { Component } from 'react';
+import React, { Component, PureComponent } from 'react';
 import {
   Platform, StyleSheet, Text, View, Image,
   ImageBackground, Button,
@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 
 import Btn from 'react-native-micro-animated-button';
+import { UIManager } from 'react-native';
 
 const { timing } = Animated;
 
@@ -26,7 +27,7 @@ const instructions = Platform.select({
 //vscode problem!
 //type Props = {navigation};
 
-export default class Home extends Component
+export default class Home extends PureComponent
 {
   static navigationOptions =  ({ navigation }) => ({
     headerStyle:{ backgroundColor: '#306470'/*, flex:1*/ },
@@ -41,6 +42,8 @@ export default class Home extends Component
   constructor(props)
   {
     super(props);
+    if(UIManager.setLayoutAnimationEnabledExperimental)
+       UIManager.setLayoutAnimationEnabledExperimental(true);
   }
 
   componentWillUnmount()
@@ -80,7 +83,7 @@ export default class Home extends Component
     //TODO: why is 
     //  onPress={this.navi2Projects}
     //not working?
-    this.props.navigation.navigate('Projects', { originator: 'home' });
+    this.props.navigation.navigate('Projects', { originator: 'home', projectsCount:0 });
   }
   render()
   {

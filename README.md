@@ -23,11 +23,10 @@ Live update of the Project Status on iOS/iPhone after changing the data in the A
 		do: Xcode -> Preferences -> Locations -> set "Command Line Tools" version
 
 ### TODO:
-	TODO: stackNavigation animation
-	TODO: custom fonts!
-	TODO: use native fbdb wrapper!(faster)
+	TODO: react-native-web
 	TODO: use auth for fbdb
 	TODO: iOS: beautify styles for iPhone
+	TODO: Splash on iOS
 
 ### libs/hints
 	react-native-micro-animated-button	//ATTENTION: needs react-native link
@@ -38,3 +37,4 @@ Live update of the Project Status on iOS/iPhone after changing the data in the A
 		npm install babel-preset-react-native-stage-0 --save
 		"presets": ["react-native", "react-native-stage-0/decorator-support"]			//in .babelrc
 		npm start reset-cache
+	Splash: react-native-splash-screen

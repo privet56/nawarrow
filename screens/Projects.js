@@ -1,5 +1,5 @@
 
-import React, { Component } from 'react';
+import React, { Component, PureComponent } from 'react';
 import {
   Platform, StyleSheet, Text, View, Image,
   ImageBackground, Button,
@@ -22,27 +22,42 @@ import { inject, observer } from 'mobx-react';
 
 @inject("projectsStore")
 @observer
-export default class Projects extends Component
+export default class Projects extends PureComponent
 {
-  static navigationOptions = {
-    title: "Projects",
+  static navigationOptions = ({ navigation }) => ({
+//    title:  "Projects",
+    title:  `Projects (${navigation.state.params.projectsCount})`,
     headerStyle:{ backgroundColor: '#306470'},
     headerTitleStyle:{ color: '#e3f2dc'},
     headerRight: <Header />,
-  }
+  });
 
   unsubscribeGetMessages = null;
 
   state = {
-    projects: []
+    //projects: []
   }
   constructor() {
     super(arguments[0]);
   }
-  componentWillUnmount() {
+  componentWillMount()
+  {
+    this.setHeaderParam();
+  }
+  componentWillUnmount()
+  {
+    
     if(this.unsubscribeGetMessages)
        this.unsubscribeGetMessages();
     this.props.projectsStore.unSubscribeToGetProjectsFromServer();
+  }
+  setHeaderParam = () => {
+
+    if(this.props.navigation.state.params.projectsCount != this.props.projectsStore.projects.length)
+    {
+      const {setParams } = this.props.navigation;
+      setParams({ projectsCount: this.props.projectsStore.projects.length });
+    }
   }
   componentDidMount()
   {
@@ -66,10 +81,14 @@ export default class Projects extends Component
         <Project item={item} index={index} onPress={() => this.onProjectSelected(item, index)} />
     );
   }
+  componentDidUpdate()
+  {
+    this.setHeaderParam();
+  }
   render()
   {
     return (
-      <ImageBackground source={require('../res/bg20.gif')} style={styles.container}>
+      <ImageBackground source={require('../res/bubbles8.gif')} style={styles.container}>
         <KeyboardAvoidingView behavior="padding"
             keyboardVerticalOffset={this.keyboardVerticalOffset}
             style={styles.container}>

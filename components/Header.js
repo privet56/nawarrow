@@ -5,11 +5,10 @@ import {
   Animated, Easing
 } from 'react-native';
 
-
 const Header = ({ }) => (
-  <ImageBackground source={require('../res/manwithbow.gif')} style={styles.container}>
-    <Text> </Text>
-  </ImageBackground>
+    <ImageBackground source={require('../res/manwithbow.gif')} style={styles.container}>
+      <Text> </Text>
+    </ImageBackground>
 )
 const styles = StyleSheet.create({
   container: {

@@ -4,7 +4,7 @@
  * @flow
  */
 
-import React, { Component } from 'react';
+import React, { Component, PureComponent } from 'react';
 import {
   Platform, StyleSheet, Text, View, Image,
   ImageBackground, Button, AppRegistry,
@@ -25,6 +25,8 @@ import Header from "./components/Header";
 import * as storage from './services/storage';
 import { Provider } from 'mobx-react';
 import ProjectsStore from './services/projectsstore';
+import { UIManager } from 'react-native';
+import CardStackStyleInterpolator from 'react-navigation/src/views/CardStack/CardStackStyleInterpolator';
 
 //Image -> invariant violation element type is invalid expected a string
 //..then you imported Image from react, but you should do it from react-native
@@ -44,10 +46,15 @@ const MainScreenNavigator = StackNavigator({
 },
 {
   initialRouteName: 'Home',
+  transitionConfig: () => ({
+    screenInterpolator: sceneProps => {
+      return CardStackStyleInterpolator.forHorizontal(sceneProps);
+    }
+  }),
   //headerMode: 'none',         //TODO: https://reactnavigation.org/docs/stack-navigator.html
 });
 
-export default class App extends Component//<Props>
+export default class App extends PureComponent//<Props>
 {
   state = {
     
@@ -55,6 +62,8 @@ export default class App extends Component//<Props>
   constructor()
   {
     super(arguments[0]);
+    if(UIManager.setLayoutAnimationEnabledExperimental)
+       UIManager.setLayoutAnimationEnabledExperimental(true);
   }    
   componentDidMount()
   {
