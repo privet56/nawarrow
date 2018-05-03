@@ -87,7 +87,7 @@ export default class Home extends Component
     //TODO: style Btn based on https://github.com/sonaye/react-native-micro-animated-button
     return (
       <ImageBackground source={require('../res/bg.gif')} style={styles.container}>
-        <Text style={styles.welcome}>
+        <Text style={[styles.welcome, {fontFamily: "engravers_old_english_bold_bt"}]}>
           Naw-ARROW!!
         </Text>
         <Animated.Image source={require('../res/compass2.gif')} />
