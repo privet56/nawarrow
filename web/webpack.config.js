@@ -76,7 +76,7 @@ module.exports = {
     contentBase: outputPath,
   },
   entry: {
-    app: path.join(__dirname, '../index.web.js')
+    app: path.join(__dirname, '../index.js')
   },
   module: {
     loaders: [
