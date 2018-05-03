@@ -80,17 +80,15 @@ export default class Home extends PureComponent
   }
   navi2Projects = () =>
   {
-    //TODO: why is 
-    //  onPress={this.navi2Projects}
-    //not working?
     this.props.navigation.navigate('Projects', { originator: 'home', projectsCount:0 });
   }
   render()
   {
     //TODO: style Btn based on https://github.com/sonaye/react-native-micro-animated-button
+
     return (
       <ImageBackground source={require('../res/bg.gif')} style={styles.container}>
-        <Text style={[styles.welcome, {fontFamily: "engravers_old_english_bold_bt"}]}>
+        <Text style={[styles.welcome, {fontFamily: Platform.OS === 'ios' ? "Champignon" : "pengravers_old_english_bold_bt"}]}>
           Naw-ARROW!!
         </Text>
         <Animated.Image source={require('../res/compass2.gif')} />
