@@ -35,3 +35,7 @@ export const pushProjectStatus = (project, index, data) => {
   return fbdb.database().ref("projects/"+index+"/status").set(data);
   //return fbdb.database().ref("projects/"+index+"/status").push(data);
 }
+
+export const login = (email, pass) => firebase.auth().signInWithEmailAndPassword(email, pass);
+export const logout = () => firebase.auth().signOut();
+export const signup = (email, pass) => firebase.auth().createUserWithEmailAndPassword(email, pass);

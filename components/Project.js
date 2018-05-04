@@ -1,7 +1,7 @@
 import React from 'react';
 import { Component, PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { Dimensions, TouchableOpacity, View, StyleSheet, Text, Animated, Switch, Image } from 'react-native'
+import { Dimensions, TouchableOpacity, View, StyleSheet, Text, Animated, Easing, Switch, Image } from 'react-native'
 
 export default class Project extends PureComponent
 {
@@ -26,12 +26,15 @@ export default class Project extends PureComponent
     Animated.timing(this.state.offsetX, {
       toValue: 0,
       duration: 666,
+      easing: Easing.bounce,
       delay: this.props.index * 333
     }).start();
     Animated.spring(this.state.progressAni, {
-      toValue: (this.props.index + 1)*30,
+      toValue: ((this.props.index + 1)*30) % 100,       //TODO: do not allow > 100
       duration: 1999,
-      delay: this.props.index+1 * 1111
+      useNativeDriver: false,
+      easing: Easing.bounce,
+      delay: (this.props.index+1) * 611
     }).start();
   }
 

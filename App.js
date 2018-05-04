@@ -23,10 +23,13 @@ import HomeScreen from './screens/Home';
 import ProjectsScreen from './screens/Projects';
 import Header from "./components/Header";
 import * as storage from './services/storage';
-import { Provider } from 'mobx-react';
 import ProjectsStore from './services/projectsstore';
+import navStore from './services/navstore';
+import * as stores from './services/stores';
 import { UIManager } from 'react-native';
 import CardStackStyleInterpolator from 'react-navigation/src/views/CardStack/CardStackStyleInterpolator';
+import { Provider, observer, inject } from 'mobx-react';
+import { addNavigationHelpers } from 'react-navigation';
 
 //Image -> invariant violation element type is invalid expected a string
 //..then you imported Image from react, but you should do it from react-native
@@ -34,7 +37,7 @@ import CardStackStyleInterpolator from 'react-navigation/src/views/CardStack/Car
 //vscode problem!
 //type Props = {};
 
-const MainScreenNavigator = StackNavigator({
+export const MainScreenNavigator = StackNavigator({
     Home: {
       screen: HomeScreen,
       navigationOptions: {
@@ -54,6 +57,16 @@ const MainScreenNavigator = StackNavigator({
   //headerMode: 'none',         //TODO: https://reactnavigation.org/docs/stack-navigator.html
 });
 
+//TODO: use better import NavigationStore from 'react-navigation-mobx-helpers'; + check if didBlur still fires!
+const AppWithInternalState = inject("navStore")(observer(({ nav, navStore }) => (
+  <MainScreenNavigator navigation={
+    addNavigationHelpers({
+      dispatch: navStore.dispatch,
+      state: navStore.navigationState,
+      addListener: () => { /* TODO: implement in a way that the this.props.navigation.addListener('didBlur' call works! eg. with 'react-navigation-mobx-helpers' */ }
+    })} />
+)));
+
 export default class App extends PureComponent//<Props>
 {
   state = {
@@ -71,8 +84,12 @@ export default class App extends PureComponent//<Props>
   }
   render()
   {
+    //<Provider projectsStore={new ProjectsStore()} {...stores}>
+
+    //TODO: 
+    //<MainScreenNavigator /> -> <AppWithInternalState />
     return (
-      <Provider projectsStore={new ProjectsStore()}>
+      <Provider {...stores}>
         <MainScreenNavigator />
       </Provider>
       );     

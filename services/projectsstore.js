@@ -33,3 +33,5 @@ export default class ProjectsStore
     this.unsubscribeFn = this.unsubscribeFn();
   }
 }
+
+export const projectsStore = new ProjectsStore();

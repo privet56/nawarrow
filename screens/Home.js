@@ -56,7 +56,7 @@ export default class Home extends PureComponent
   {
     this.state = {
       scaleAnim: new Animated.Value(1)
-    };    
+    };
     this.listeners.push(this.props.navigation.addListener('didBlur', () => this.btnStart.reset()));  //willFocus, willBlur, didFocus, didBlur
 
     Animated.loop(

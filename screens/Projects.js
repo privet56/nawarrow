@@ -20,9 +20,12 @@ import { inject, observer } from 'mobx-react';
 
 //type Props = {};
 
+//Warning has a method called shouldComponentUpdate(). shouldComponentUpdate should not be used when extending React.PureComponent. Please extend React.Component if shouldComponentUpdate is used
+//  (you get this warning only in combination with @observer)
+
 @inject("projectsStore")
 @observer
-export default class Projects extends PureComponent
+export default class Projects extends Component//PureComponent
 {
   static navigationOptions = ({ navigation }) => ({
 //    title:  "Projects",

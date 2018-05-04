@@ -30,6 +30,7 @@ Live update of the Project Status on iOS/iPhone after changing the data in the A
 		npm install webpack-cli --save-dev
 		+ index.html + webpack.config.js
 		npm run web:dev
+		... https://pickering.org/using-react-native-react-native-web-and-react-navigation-in-a-single-project-cfd4bcca16d0
 
 	TODO: use auth for fbdb
 	TODO: iOS: beautify styles for iPhone
